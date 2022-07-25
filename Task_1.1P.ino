@@ -14,7 +14,10 @@ void setup()
 
 void loop()
 {
+  //read input of PIR
   pirStat = digitalRead(pirPin);
+  
+  //If PIR detected motion, LED is lit. Else if PIR does not detect motion, LED is OFF.
   if (pirStat == 1) {
     ledState = HIGH;
     digitalWrite(LED_BUILTIN, ledState);
@@ -24,7 +27,10 @@ void loop()
     digitalWrite(LED_BUILTIN, ledState);
   }
   
-    Serial.println("SENSOR INPUT: "+ String(pirStat) +
-               " || LED STATE: " + String(ledState));
-  delay(1000); // Wait for 1000 millisecond(s)
+  //print sensor and led state to serial monitor
+  Serial.println("SENSOR INPUT: "+ String(pirStat) +
+                 " || LED STATE: " + String(ledState));
+  
+  // Wait for 1000 millisecond(s)
+  delay(1000); 
 }
